@@ -33,7 +33,9 @@ public class Test {
 
     }
 
+    main
     public static void main(String[] args) {
+        System.out.println(java);
         List<String> list = new ArrayList<>();
         list.add("1");
         list.add("2");
