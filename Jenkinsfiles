@@ -1,5 +1,8 @@
 pipeline{
     agent any
+	environment { 
+        CC = 'clang'
+    }
     stages {
         stage('Build') {
             steps{
@@ -13,12 +16,19 @@ pipeline{
         stage('Test') {
             steps{
                 echo 'This is a test step'  
+				echo '${env.CC}'
             }
         }
         stage('Deploy') {
             steps{
                 echo 'This is a deploy step'    
+				sh '${CC}'
             }
         }
     }
+	post {
+		always{
+			echo 'I will always say Hello again!'
+		}
+	}
 }
