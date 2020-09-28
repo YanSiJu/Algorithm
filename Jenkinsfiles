@@ -16,6 +16,14 @@ pipeline{
 				}
             }
         }
+		stage('Example Deploy') {
+            when {
+                branch 'master'
+            }
+            steps {
+                echo 'Deploying'
+            }
+        }
 		stage('Example') {
             input {
                 message "Should we continue?"
@@ -27,14 +35,6 @@ pipeline{
             }
             steps {
                 echo "Hello, ${PERSON}, nice to meet you."
-            }
-        }
-		stage('Example Deploy') {
-            when {
-                branch 'master'
-            }
-            steps {
-                echo 'Deploying'
             }
         }
         stage('Test') {
