@@ -18,7 +18,6 @@ pipeline{
             }
         }
 		stage('Example Deploy') {
-			
             when {
                  environment name: 'DEPLOY_TO', value: 'production'
             }
@@ -39,6 +38,26 @@ pipeline{
                 echo "Hello, ${PERSON}, nice to meet you."
             }
         }
+		stage('Parallel Stage') {
+            when {
+                branch 'master'
+            }
+            failFast true
+            parallel {
+                stage('Branch A') {
+                    agent any
+                    steps {
+                        echo "On Branch A"
+                    }
+                }
+                stage('Branch B') {
+                    agent any
+                    steps {
+                        echo "On Branch B"
+                    }
+                }
+            }
+        }
         stage('Test') {
             steps{
                 echo 'This is a test step'  
@@ -55,7 +74,7 @@ pipeline{
     }
 	post {
 		success {
-			echo 'I will always say Hello again!'
+			echo 'I will say Hello when success!'
 		}
 	}
 }
