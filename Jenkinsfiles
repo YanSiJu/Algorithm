@@ -23,6 +23,9 @@ pipeline{
             }
             steps {
                 echo 'Deploying'
+				echo "branch: ${env.BRANCH_NAME}"
+				echo "current SHA: ${env.GIT_COMMIT}"
+				echo "previous SHA: ${env.GIT_PREVIOUS_SUCCESSFUL_COMMIT}"script
             }
         }
 		stage('Example') {
@@ -40,7 +43,7 @@ pipeline{
         }
 		stage('Parallel Stage') {
             when {
-                branch 'master'
+                environment name: 'DEPLOY_TO', value: 'production'
             }
             failFast true
             parallel {
