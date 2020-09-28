@@ -3,16 +3,11 @@ pipeline{
     stages {
         stage('Build') {
             steps{
-<<<<<<< HEAD
                 echo 'This is a build step' 
 				script{
 				     mavenHome = tool 'M3'
                      sh "${mavenHome}/bin/mvn -v"
 				}
-=======
-                echo 'This is a build step'
-		mavenHome = tool 'M3'
->>>>>>> d3ac83849a06d68f6378e14d83f1018860c6da8a
             }
         }
         stage('Test') {
