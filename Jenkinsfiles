@@ -3,6 +3,9 @@ pipeline{
 	environment { 
         CC = 'clang'
     }
+	parameters {
+        string(name: 'PERSON', defaultValue: 'Mr Jenkins', description: 'Who should I say hello to?')
+    }
     stages {
         stage('Build') {
             steps{
@@ -16,7 +19,8 @@ pipeline{
         stage('Test') {
             steps{
                 echo 'This is a test step'  
-				echo '${env.CC}'
+				echo "${env.CC}"
+				echo "Hello ${params.PERSON}"
             }
         }
         stage('Deploy') {
