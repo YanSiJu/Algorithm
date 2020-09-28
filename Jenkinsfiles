@@ -22,7 +22,7 @@ pipeline{
         stage('Deploy') {
             steps{
                 echo 'This is a deploy step'    
-				sh '${CC}'
+				sh 'echo $CC'
             }
         }
     }
