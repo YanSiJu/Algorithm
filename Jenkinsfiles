@@ -5,7 +5,6 @@ pipeline{
             steps{
                 echo 'This is a build step'
 		mavenHome = tool 'M3'
-		sh "${mavenHome}/bin/mvn -v"
             }
         }
         stage('Test') {
