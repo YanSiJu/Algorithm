@@ -29,6 +29,14 @@ pipeline{
                 echo "Hello, ${PERSON}, nice to meet you."
             }
         }
+		stage('Example Deploy') {
+            when {
+                branch 'production'
+            }
+            steps {
+                echo 'Deploying'
+            }
+        }
         stage('Test') {
             steps{
                 echo 'This is a test step'  
